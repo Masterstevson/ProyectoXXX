@@ -1,0 +1,32 @@
+/* css menu*/
+body{
+	margin: 0;
+	background-color: black;
+
+}
+
+.divTitulo{
+	background-color: blue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.divVideos{
+	margin-top: 50px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
+    gap: 16px; /* Espacio entre los elementos */
+}
+.divVideos div{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+@media (max-width: 768px) {
+	.divVideos{
+	  grid-template-columns: 1fr; /* Cambia a 1 columna */
+	}
+}
