@@ -1,0 +1,143 @@
+/* css menu*/
+.boton{
+	width: 25px;
+	
+}
+
+body {
+	margin: 0;
+	/*esto le quita el margen*/
+
+	
+
+	background-color: black;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;	
+	font-family: sans-serif;
+
+}
+
+header {
+	width: 100%;
+	background-color: #B83B3B ;
+}
+
+
+/*con esto desaparesco el botonsito shuleador*/
+#btn-menu {
+	display: none;
+}
+
+header label {
+	display: none;
+	/*este display none es por que esto lo queremos en dispositivos moviles*/
+	width: 25px;
+	padding: 5px;
+	padding-top: 8px;
+	border-right:  1px solid black;
+	}
+
+header label:hover {
+	cursor: pointer;
+	/*para que aparesca la manito*/
+	background: rgba(0,0,0,0.3);
+}
+
+.menu ul {
+	margin: 0px;
+	list-style:  none;
+	padding: 0;
+	display: flex;
+	/*este flex hace que los li sean cajas flexibles y los coloque en una fila*/
+
+	/*justify-content: flex-end;*/
+	/*esta linea nos sirve para poner los menus al lado izquierdo*/
+
+	/*justify-content: center;*/
+	/*esta linea nos sirve para poner los menus en el centro*/
+}
+
+
+/*.menu li{
+	text-align: center;
+	flex-grow: 1;
+}*/
+/*con este logramos otro efecto interesabte distinto*/
+
+
+.menu  a   {
+	color: #fff;
+	text-decoration: none;
+}
+
+.menu  li   {
+	display: block;
+	padding: 15px 20px;
+	border-right: 1px solid white;
+	/*el borde de los menus*/
+}
+
+.menu  li:hover {
+	background: rgba(0,0,0,0.3);
+	
+}
+
+
+@media(max-width: 768px){
+	header label{
+		display: block;
+	}
+	.menu {
+		position: absolute;
+		background-color: purple;
+		width: 30%;
+		margin-left: -70%; 
+		/*este lo que hace es corrernos el menu en negativo y por eso no lo vemos*/
+		transition: all 0.5s;
+	}
+
+	.menu ul{
+		flex-direction: column;
+
+	}
+
+	.menu li{
+		border-top: 1px solid white;
+	}
+
+	#btn-menu:checked ~ .menu {
+		margin:  0;
+	}
+	/*ella rayita rara se hace con el atajo alt 126*/
+}
+/*cuando su ancho maximo este entre 768 pixeles hacer lo siguiente*/
+
+
+
+
+
+.parrafo1 {
+	font-size: 30px;
+	color: white;
+	
+}
+
+
+.contenedor-columnas{
+	padding: 50px;
+	width: 100%;
+	margin: auto;
+}
+
+.div1{
+
+	width: 50%;
+	float: left;
+}
+
+
+.video1{
+	padding-top: 50px;
+}
