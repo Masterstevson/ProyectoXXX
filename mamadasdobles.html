@@ -38,6 +38,10 @@ if (info === "MamadaDobleTriple") {
 	// URL del archivo raw de GitHub
 	const fileUrl = 'https://masterstevson.github.io/ProyectoXXX/videos.txt';
 
+	// La categoría que deseas buscar
+	const categoria = 'MamadaDobleTriple'; // Cambia esto según tu categoría
+
+
 	// Hacer la solicitud fetch para obtener el archivo
 	fetch(fileUrl)
 	.then(response => {
@@ -47,7 +51,26 @@ if (info === "MamadaDobleTriple") {
 		return response.text(); // Leer el archivo como texto
 	})
 	.then(data => {
-		console.log(data); // Mostrar el contenido del archivo en la consola
+		// Dividir el contenido del archivo en líneas
+		const lines = data.split('\n');
+		let mostrarContenido = false;
+		const resultado = [];
+
+		lines.forEach(line => {
+		if (line.includes(`xxxxx${categoria}xxxxx`)) {
+			// Encontramos la categoría
+			mostrarContenido = true;
+		} else if (line.includes('xxxxx') && mostrarContenido) {
+			// Otra categoría encontrada, detener la captura
+			mostrarContenido = false;
+		} else if (mostrarContenido && line.startsWith('/////')) {
+			// Capturamos el contenido que pertenece a la categoría
+			resultado.push(line.replace(/\/\/\//g, '').trim());
+		}
+		});
+
+		// Mostrar los resultados en la consola
+		console.log(`Contenido para la categoría "${categoria}":`, resultado);
 	})
 	.catch(error => {
 		console.error('Hubo un problema con la carga del archivo:', error);
