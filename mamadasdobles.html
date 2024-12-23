@@ -8,16 +8,14 @@
 <body>
 	
 <div class='divheader' id='' >
-	<a class='pMFX' href="index.html">MFX</a>
+	<a class='pMFX' href="index.html">MFXXX</a>
 </div>
 
 <div class='divTitulo' id='' >
-	<p class=''>Mamadas dobles y triples</p>
+	<p class='pTitulo'></p>
 </div>
 
-<div class='divVideos' id='' >
-	
-</div>
+<div class='divVideos' id='' ></div>
 <script>
 // Obtener los parámetros de la URL
 const urlParams = new URLSearchParams(window.location.search);
@@ -28,11 +26,16 @@ const info = urlParams.get('info'); // Obtiene el valor de 'info'
 const fileUrl = 'https://masterstevson.github.io/ProyectoXXX/videos.txt';
 
 // La categoría que deseas buscar
-const categoria = 'MamadaDobleTriple'; // Cambia esto según tu categoría
+/////const categoria = 'MamadaDobleTriple'; // Cambia esto según tu categoría
 
+// Seleccionar el elemento <p> con la clase "pTitulo"
+const pTitulo = document.querySelector('.pTitulo');
 
-// Hacer la solicitud fetch para obtener el archivo
-// Hacer la solicitud fetch para obtener el archivo
+// Insertar el valor de "info" dentro del <p>
+if (pTitulo && info) {
+  pTitulo.textContent = info; // Asigna el texto obtenido de "info"
+}
+
 // Hacer la solicitud fetch para obtener el archivo
 fetch(fileUrl)
   .then(response => {
