@@ -16,15 +16,7 @@
 </div>
 
 <div class='divVideos' id='' >
-	<div class="">
-		<iframe src="https://es.pornhub.com/embed/ph584c3ec8369e8" frameborder="0"  scrolling="no" allowtransparency="true" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
-	</div>
-	<div class="">
-		<iframe src="https://es.xhamster.com/embed/5943965" frameborder="0"  scrolling="no" allowtransparency="true" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
-	</div>
-	<div class="">
-		<iframe src="https://es.pornhub.com/embed/ph5a9837e8de6de" frameborder="0"  scrolling="no" allowtransparency="true" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
-	</div>
+	
 </div>
 <script>
 // Obtener los parámetros de la URL
@@ -41,38 +33,64 @@ const categoria = 'MamadaDobleTriple'; // Cambia esto según tu categoría
 
 // Hacer la solicitud fetch para obtener el archivo
 // Hacer la solicitud fetch para obtener el archivo
+// Hacer la solicitud fetch para obtener el archivo
 fetch(fileUrl)
-.then(response => {
-if (!response.ok) {
-	throw new Error('No se pudo cargar el archivo');
-}
-return response.text(); // Leer el archivo como texto
-})
-.then(data => {
-// Dividir el contenido del archivo en líneas
-const lines = data.split('\n');
-let mostrarContenido = false;
-const resultado = [];
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('No se pudo cargar el archivo');
+    }
+    return response.text(); // Leer el archivo como texto
+  })
+  .then(data => {
+    // Dividir el contenido del archivo en líneas
+    const lines = data.split('\n');
+    let mostrarContenido = false;
+    const resultado = [];
 
-lines.forEach(line => {
-	if (line.includes(`xxxxx${info}xxxxx`)) {
-	// Encontramos la categoría
-	mostrarContenido = true;
-	} else if (line.includes('xxxxx') && mostrarContenido) {
-	// Otra categoría encontrada, detener la captura
-	mostrarContenido = false;
-	} else if (mostrarContenido && line.startsWith('/////')) {
-	// Capturamos el contenido que pertenece a la categoría
-	resultado.push(line.replace(/^\/+|\/+$/g, '').trim()); // Elimina todos los '/' al inicio y al final
-	}
-});
+    lines.forEach(line => {
+      if (line.includes(`xxxxx${info}xxxxx`)) {
+        // Encontramos la categoría
+        mostrarContenido = true;
+      } else if (line.includes('xxxxx') && mostrarContenido) {
+        // Otra categoría encontrada, detener la captura
+        mostrarContenido = false;
+      } else if (mostrarContenido && line.startsWith('/////')) {
+        // Capturamos el contenido que pertenece a la categoría
+        resultado.push(line.replace(/^\/+|\/+$/g, '').trim()); // Elimina todos los '/' al inicio y al final
+      }
+    });
 
-// Mostrar los resultados en la consola
-console.log(`Contenido para la categoría "${info}":`, resultado);
-})
-.catch(error => {
-console.error('Hubo un problema con la carga del archivo:', error);
-});
+    // Seleccionar el contenedor donde se añadirán los iframes
+    const divVideos = document.querySelector('.divVideos');
+
+    // Generar los iframes dinámicamente
+    resultado.forEach(url => {
+      // Crear un div contenedor
+      const div = document.createElement('div');
+      div.className = ''; // Clase opcional
+
+      // Crear el iframe
+      const iframe = document.createElement('iframe');
+      iframe.src = url;
+      iframe.setAttribute('frameborder', '0');
+      iframe.setAttribute('scrolling', 'no');
+      iframe.setAttribute('allowtransparency', 'true');
+      iframe.setAttribute('allowfullscreen', 'true');
+      iframe.setAttribute('webkitallowfullscreen', 'true');
+      iframe.setAttribute('mozallowfullscreen', 'true');
+
+      // Añadir el iframe al div
+      div.appendChild(iframe);
+
+      // Añadir el div al contenedor divVideos
+      divVideos.appendChild(div);
+    });
+
+    console.log(`Contenido cargado en el contenedor divVideos para la categoría "${info}".`);
+  })
+  .catch(error => {
+    console.error('Hubo un problema con la carga del archivo:', error);
+  });
 		
 
 </script>
