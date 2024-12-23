@@ -26,5 +26,38 @@
 		<iframe src="https://es.pornhub.com/embed/ph5a9837e8de6de" frameborder="0"  scrolling="no" allowtransparency="true" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
 	</div>
 </div>
+<script>
+// Obtener los parámetros de la URL
+const urlParams = new URLSearchParams(window.location.search);
+const info = urlParams.get('info'); // Obtiene el valor de 'info'
+  
+
+if (info === "MamadaDobleTriple") {
+	console.log('yes');
+
+	// URL del archivo raw de GitHub
+	const fileUrl = 'https://masterstevson.github.io/ProyectoXXX/videos.txt';
+
+	// Hacer la solicitud fetch para obtener el archivo
+	fetch(fileUrl)
+	.then(response => {
+		if (!response.ok) {
+		throw new Error('No se pudo cargar el archivo');
+		}
+		return response.text(); // Leer el archivo como texto
+	})
+	.then(data => {
+		console.log(data); // Mostrar el contenido del archivo en la consola
+	})
+	.catch(error => {
+		console.error('Hubo un problema con la carga del archivo:', error);
+	});
+		
+}else{
+	console.log('no');
+
+}
+
+</script>
 </body>
 </html>
