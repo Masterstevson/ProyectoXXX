@@ -2,8 +2,28 @@
 body{
 	margin: 0;
 	background-color: black;
-
+	padding-top: 100px;
 }
+
+.divheader {
+    position: fixed; /* Fijo en la pantalla */
+    top: 0; /* Posición en la parte superior */
+    left: 0; /* Alineado al borde izquierdo */
+    width: 100%; /* Abarca todo el ancho de la pantalla */
+    background-color: #B83B3B; /* Color de fondo */
+    height: 100px; /* Altura del encabezado */
+    z-index: 3; /* Se asegura de que esté por encima de otros elementos */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.pMFX{
+	font-size: 50px;
+	text-decoration: none; /* Elimina la subrayado */
+    color: white; /* Cambia el color del texto a blanco */
+}
+
 
 .divTitulo{
 	background-color: blue;
@@ -24,9 +44,32 @@ body{
 	align-items: center;
 }
 
+.divCategorias{
+	margin-top: 50px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual tamaño */
+    gap: 16px; /* Espacio entre los elementos */
+}
+.divCategorias div{
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.aCategorias{
+	background-color: #B83B3B;
+	font-size: 20px;
+	text-decoration: none; /* Elimina la subrayado */
+    color: white; /* Cambia el color del texto a blanco */
+	padding: 10px;
+	text-transform: uppercase; /* Convierte el texto a mayúsculas */
+}
 
 @media (max-width: 768px) {
 	.divVideos{
 	  grid-template-columns: 1fr; /* Cambia a 1 columna */
+	}
+	.divCategorias{
+		grid-template-columns: 1fr; /* Cambia a 1 columna */
 	}
 }
