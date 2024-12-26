@@ -26,10 +26,14 @@ body{
 
 
 .divTitulo{
-	background-color: blue;
+	/* background-color: blue; */
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+.pTitulo{
+    color: white; /* Cambia el color del texto a blanco */
+	font-size: 20px;
 }
 
 .divVideos{
